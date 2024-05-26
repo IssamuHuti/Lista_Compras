@@ -4,6 +4,19 @@ from datetime import datetime
 def limpar_tela():
     os.system('cls')
 
+def demonstracao_lista():
+    print('Grau de prioridade: (1) Desnecessário  -  (5) Importante')
+    numeracao = 0
+    if len(lista_de_compras) == 0:
+        print('Nada listado')
+    for i in lista_de_compras:
+        numeracao += 1
+        print(numeracao, end='')
+        for detalhe in i:
+            print(' - ', detalhe, end='')
+        print()
+    print()
+
 lista_de_compras = []
 
 data_compra = datetime.now()
@@ -19,12 +32,11 @@ while True:
     if opcao.lower() == 'i':
         limpar_tela()
         print('Lista de compras:')
-        for lista in lista_de_compras:
-            print(f'{produto}  -  {valor:2}  -  {prioridade}')
+        demonstracao_lista()
         produto = input('Produto: ')
-        valor = input('Valor: ')
-        prioridade = ('Grau de prioridade: ')
-        lista_de_compras([
+        valor = input('Valor: R$ ')
+        prioridade = input('Grau de prioridade: ')
+        lista_de_compras.append([
             produto,
             valor,
             prioridade
@@ -42,32 +54,12 @@ while True:
             print('Índice não existe na lista')
 
     elif opcao.lower() == 'l':
-            limpar_tela()
-            numeracao = 0
-            if len(lista_de_compras) == 0:
-                print('Nada para listar')
-            for i in lista_de_compras:
-                numeracao += 1
-                print(numeracao, end=' - ')
-                for detalhe in i:
-                    print(detalhe , end='  ')
-                print('')
+        limpar_tela()
+        demonstracao_lista()
     
     elif opcao.lower() == 'f':
-        limpar_tela()
-        numeracao = 0
-        if len(lista_de_compras) == 0:
-            print('Nada para listar')
-        for i in lista_de_compras:
-            numeracao += 1
-            print(numeracao, end=' - ')
-            for detalhe in i:
-                print(detalhe , end='  ')
-            print('')
         break
 
 limpar_tela()
-print("Lista de compras final:")
-for item in lista_de_compras:
-    print(f'{produto}  -  {valor:2}  -  {prioridade}')
-    
+print("Lista de compra da data ", data_formatada)
+demonstracao_lista()
