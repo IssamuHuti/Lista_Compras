@@ -17,16 +17,29 @@ def demonstracao_lista():
         print()
     print()
 
+def retirar_indice():
+    indice_str = input('Escolha o indice que será retirada: ')
+    try:
+        indice = int(indice_str)
+        del lista_de_compras[indice]
+    except ValueError:
+        print('Por favor digite um número inteiro')
+    except IndexError:
+        print('Índice não existe na lista')
+
+def data_lista():
+    print("Lista de compra da data ", data_formatada)
+    demonstracao_lista()
+
 lista_de_compras = []
 
 data_compra = datetime.now()
 data_formatada = data_compra.strftime('%d/%m/%Y')
 print('Data da compra:', data_formatada)
-
 limite_gasto = input('Limite máximo de gastos na compra: R$ ')
 
 while True:
-    os.system('cls')
+    limpar_tela()
     opcao = input('Escolha uma opção: (i)Inserir  (r)Retirar  (l)Listar  (f)Finalizar: ')
 
     if opcao.lower() == 'i':
@@ -44,14 +57,7 @@ while True:
 
     elif opcao.lower() == 'r':
         limpar_tela()
-        indice_str = int(input('Escolha o indice que será retirada: '))
-        try:
-            indice = int(indice_str)
-            del lista_de_compras[indice]
-        except ValueError:
-            print('Por favor digite um número inteiro')
-        except IndexError:
-            print('Índice não existe na lista')
+        retirar_indice()
 
     elif opcao.lower() == 'l':
         limpar_tela()
@@ -61,5 +67,19 @@ while True:
         break
 
 limpar_tela()
-print("Lista de compra da data ", data_formatada)
-demonstracao_lista()
+total_compra = 0
+for compra in lista_de_compras:
+    total_compra += compra[1]
+print(f'Valor da lista: R$ {total_compra}')
+
+data_lista()
+while total_compra > limite_gasto:
+    limpar_tela()
+    print('Valor dos itens maior do que limite de gastos, tire alguns itens da lista')
+    demonstracao_lista()
+    print('Para retirar os itens leve em consideração a classificação das prioridades dos itens')
+    print()
+    retirar_indice()
+
+limpar_tela()
+data_lista()
