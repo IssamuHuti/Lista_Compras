@@ -6,7 +6,7 @@ def limpar_tela():
 
 def demonstracao_lista():
     print('Grau de prioridade: (1) Desnecessário  -  (5) Importante')
-    numeracao = 0
+    numeracao = -1
     if len(lista_de_compras) == 0:
         print('Nada listado')
     for i in lista_de_compras:
@@ -67,19 +67,24 @@ while True:
         break
 
 limpar_tela()
-total_compra = 0
+total = 0
 for compra in lista_de_compras:
-    total_compra += compra[1]
-print(f'Valor da lista: R$ {total_compra}')
+    total += int(compra[1])
+print(f'Valor da lista: R$ {total}')
+print()
 
 data_lista()
-while total_compra > limite_gasto:
+while total > int(limite_gasto):
     limpar_tela()
     print('Valor dos itens maior do que limite de gastos, tire alguns itens da lista')
     demonstracao_lista()
     print('Para retirar os itens leve em consideração a classificação das prioridades dos itens')
     print()
     retirar_indice()
+    total = 0
+    for compra in lista_de_compras:
+        total += int(compra[1])
 
 limpar_tela()
 data_lista()
+demonstracao_lista()
