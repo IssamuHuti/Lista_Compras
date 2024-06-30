@@ -6,7 +6,7 @@ Projeto criado para organizar a sua lista de compra em mercado ou em outros luga
 - botar prioridades em cada item da lista de 1 a 5 - OK
 - colocar o valor estimado de cada item da lista - OK
 - informar a data da criação da lista - OK
-- se a lista de compras ultrapassar o limite de gastos, começar a eliminar os itens com pouca prioridade
+- se a lista de compras ultrapassar o limite de gastos, começar a eliminar os itens com pouca prioridade - OK
 - criar opções para poder rodar se vai listar um novo item, apagar, vizualizar e finalizar o cadastro da lista - OK
 - após finalizar o cadastro, criar uma nova opção para que possa armazenar a lista de compras na memória do programa
 - criar uma opção que permite resgatar a lista armazenada, porém que não permite alterar os seus valores
